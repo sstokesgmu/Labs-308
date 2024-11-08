@@ -13,37 +13,34 @@
 //     get the return from the equation and compare it the % Promise
 // the number passed has to be 1 <= a < prime
     
-    
-console.log(isPrime(100,8));
-
-
-// function toPrimeNumber(number){
+const value = 2;
+console.log(isPrime(value,3,true));
 
 
 
 
+function isPrime(number, potentialPrime, flag) { //number is random, prime is the number passed
 
+    if (flag && FermatLittle(number, potentialPrime)) //is the first value passed a prime number
+    {
+        console.log(`Skipping Prime Detected as first input on ${number}`);
+        return isPrime(2, potentialPrime + 1,false);
+    }
 
+    console.log(`Checking: number=${number}, potentialPrime=${potentialPrime}, flag=${flag}`);
 
-
-//     return // Return the  As soon as you find the prime number, log that number and exit the loop.
-// }
-
-
-
-function isPrime(number, potentialPrime) { //number is random, prime is the number passed
+    //Is this the first time the function was called and the number is a prime number skip
     if(number >= 1 && number < potentialPrime) // check the range of the number 1 <= a < prime
     {
-        let result = number**potentialPrime - number;
-        return((result % potentialPrime == 0 ? potentialPrime : isPrime( getRandomInt(1,4), potentialPrime + 1)));
+        return( FermatLittle(number, potentialPrime) ? potentialPrime: isPrime( 2, potentialPrime + 1, false)  );
     }
     else
-        return isPrime( getRandomInt(1,4), potentialPrime+=1)
+        return isPrime( 2, potentialPrime + 1, false)
 }
-function getRandomInt(min, max) {
-    const minCeiled = Math.ceil(min);
-    const maxFloored = Math.floor(max);
-    return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); // The maximum is exclusive and the minimum is inclusive
-}
-  
 
+function FermatLittle(a,P)
+{
+    //a**P - a = P * a
+    let result = a**P - a;
+    return result % P == 0;
+}
