@@ -34,8 +34,8 @@ function isPrime(number, potentialPrime, flag) { //number is random, prime is th
     {
         return( FermatLittle(number, potentialPrime) ? potentialPrime: isPrime( 2, potentialPrime + 1, false)  );
     }
-    else
-        return isPrime( 2, potentialPrime + 1, false)
+    // else
+    //     return isPrime( 2, potentialPrime + 1, false)
 }
 
 function FermatLittle(a,P)
