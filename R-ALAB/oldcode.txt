@@ -1,0 +1,34 @@
+//Data Collections for keys
+const keys = [","]
+function Cell(id, contents) {
+    this.id = id , //Array of x, y
+    this.contents = contents, //String
+    this.print = function() {console.log(`This cell location: ${this.id}, and the cell contents: ${this.contents}`)} 
+}
+
+
+firstrow = BuildCellsFromString(firstrow);
+// table.x = firstrow.length;
+// console.log(`The number of columns inside this table is ${table.x}`);
+
+// function BuildCellsFromString(string) {
+//     row = [];
+//     test: for(let i = 0, container = string; i < string.length;)
+//     {
+//         cell = new Cell([0, 0], "");
+//         for(let char of container) //Grab a element at the array
+//         { 
+//             if (keys.includes(char)) //determines whether an array includes a certain value among its entries, returning true or false
+//             {
+//                 container = string.slice(i+1, string.length); // Shorten the string 
+//                 row.push(cell);
+//                 i++
+//                 continue test; //Close the loop start a new cell 
+//             }
+//             cell.contents += char;
+//             i++
+//         }
+//         row.push(cell); //print the last cell because we exit the loop early
+//     }
+//     return row; 
+// }
