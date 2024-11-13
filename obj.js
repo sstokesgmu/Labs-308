@@ -42,3 +42,12 @@ const users = [
   users.forEach((user) => {
     console.log(user.username);
   })
+
+    //I just discovered that you can return objects
+    function createPerson(name, age, isDeveloper) {
+      return {
+        name: name,
+        age: age,
+        isDeveloper: isDeveloper
+      };
+    }
