@@ -5,6 +5,9 @@ let table = {
     rows: [], 
 };
 
+
+
+
 // Building the rows
 for(let i = 0, j = 1; i <= passedString.length; j++)
 {   
@@ -42,15 +45,21 @@ for(let i = 0, j = 1; i <= passedString.length; j++)
     //what is the difference between table[rows].push()
     i += test.length + 1;
 }
+
 // console.log(table.rows);
 table.rows.pop();
 let item =  { id: "48", name: "Barry", occupation: "Runner", age: "25" };
 table.rows.splice(1,0, item);
 
 item =  { id: "7", name: "Bilbo", occupation: "None", age: "111" };
-table.rows.push(item);
-// console.log(table.rows);
 
-let avgAge = 0;
+let result = table.rows;
 
+let sum = 0; 
+result.forEach(function(object){
+    sum += Number(object.age, 0);
+})
 
+average = sum / result.length;
+
+console.log(`The average of all the ages is: ${average}`);
