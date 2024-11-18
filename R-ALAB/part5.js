@@ -56,15 +56,27 @@ let result = table.rows; //[{}] is a multidimensional array
 let a = Object.keys(result[0]); //returns an array of obj key properties
 
 
-a = a.map(function(word){
+let csv = a.map(function(word){
     return word[0].toUpperCase() + word.slice(1); //Combine the first element of the word at 0 to the rest of the string 
-    //slice(1)
 });
 
 result.forEach(function(obj){ //looping through the results to array
-   let a = Object.values(obj); //
-    a[0] = '\\n ' + a[0];
-    return a.push(a);
-})
-console.log(a.flat().toString());
+   let a = Object.values(obj); 
+    a[0] = '\\n' + a[0];
+    csv.push(a);
+});
+csv = csv.flat();
+
+
+for(let i = 0; i < csv.length; i++){
+    let element = csv[i];
+    if(element.includes('\\n')){
+        csv[i-1] += element;
+        csv.splice(i,1);
+    }
+}
+csv = csv.toString();
+console.log(csv);
+
+
 
