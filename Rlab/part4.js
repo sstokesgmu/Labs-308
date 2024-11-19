@@ -46,14 +46,13 @@ for(let i = 0, j = 1; i <= passedString.length; j++)
     i += test.length + 1;
 }
 
-// console.log(table.rows);
 table.rows.pop();
-let item =  { id: "48", name: "Barry", occupation: "Runner", age: "25" };
-table.rows.splice(1,0, item);
-
-item =  { id: "7", name: "Bilbo", occupation: "None", age: "111" };
-
+let obj =  { id: "48", name: "Barry", occupation: "Runner", age: "25" };
+table.rows.splice(1,0, obj); //Insert item after index 1
+obj =  { id: "7", name: "Bilbo", occupation: "None", age: "111" };
+table.rows.push(obj);
 let result = table.rows;
+console.log(result);
 
 let sum = 0; 
 result.forEach(function(object){

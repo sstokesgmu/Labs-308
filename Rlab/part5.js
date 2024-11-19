@@ -5,7 +5,6 @@ let table = {
     rows: [], 
 };
 
-
 // Building the rows
 for(let i = 0, j = 1; i <= passedString.length; j++)
 {   
@@ -44,38 +43,33 @@ for(let i = 0, j = 1; i <= passedString.length; j++)
     i += test.length + 1;
 }
 
-// console.log(table.rows);
 table.rows.pop();
-let item =  { id: "48", name: "Barry", occupation: "Runner", age: "25" };
-table.rows.splice(1,0, item);
+let obj=  { id: "48", name: "Barry", occupation: "Runner", age: "25" };
+table.rows.splice(1,0, obj);
 
-item =  { id: "7", name: "Bilbo", occupation: "None", age: "111" };
-
+obj =  { id: "7", name: "Bilbo", occupation: "None", age: "111" };
+table.rows.push(obj);
 let result = table.rows; //[{}] is a multidimensional array 
+let cat_array = Object.keys(result[0]); //returns an array of obj key properties
 
-let a = Object.keys(result[0]); //returns an array of obj key properties
-
-
-let csv = a.map(function(word){
+let csv = cat_array.map(function(word){
     return word[0].toUpperCase() + word.slice(1); //Combine the first element of the word at 0 to the rest of the string 
 });
 
-result.forEach(function(obj){ //looping through the results to array
-   let a = Object.values(obj); 
-    a[0] = '\\n' + a[0];
-    csv.push(a);
+result.forEach(function(obj){ //looping through each result of the array
+   let val_array = Object.values(obj); //returns an new array of the objects value
+    val_array[0] = '\\n' + val_array[0]; // at the first element add a new line \\n string literal
+    csv.push(val_array); //push to a csv array
 });
-csv = csv.flat();
-
-
+csv = csv.flat(); //simplify the nested elements in the array
 for(let i = 0; i < csv.length; i++){
     let element = csv[i];
     if(element.includes('\\n')){
-        csv[i-1] += element;
-        csv.splice(i,1);
+        csv[i-1] += element; // combine array element before the newline with the current element
+        csv.splice(i,1); //remove the eleement from the array
     }
 }
-csv = csv.toString();
+csv = csv.toString(); //convert the array to a string.
 console.log(csv);
 
 
